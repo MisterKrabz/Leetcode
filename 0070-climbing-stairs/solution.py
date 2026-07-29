@@ -2,14 +2,15 @@ class Solution:
     def climbStairs(self, n: int) -> int:
         memo = dict()
 
-        def climb(num):
-            if num == 0 or num == 1:
+        def climb(n): 
+            if n == 0: 
                 return 1
-            elif num not in memo: 
-                memo[num] = climb(num-1) + climb(num-2)
-            
-            return memo[num]
-        
-        return climb(n)
-        
+            elif n == 1: 
+                return 1
+            elif n in memo: 
+                return memo[n]
+            else: 
+                memo[n] = climb(n-1) + climb(n-2)
+                return memo[n]
 
+        return climb(n)
